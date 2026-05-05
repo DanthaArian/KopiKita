@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  background: #fff8ef;
+  color: #5a3825;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full min-w-0 max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .section-eyebrow {
+    @apply text-xs font-extrabold uppercase tracking-[0.14em] text-caramel;
+  }
+
+  .section-title {
+    @apply mt-3 font-display text-3xl font-extrabold leading-tight text-espresso sm:text-4xl lg:text-5xl;
+  }
+
+  .section-description {
+    @apply mt-4 text-base leading-8 text-coffee/75;
+  }
+
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-extrabold transition duration-300 focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4;
+  }
+
+  .btn-primary {
+    @apply bg-caramel text-espresso shadow-soft hover:-translate-y-0.5 hover:bg-[#d7954f] hover:shadow-warm focus-visible:outline-caramel/35;
+  }
+
+  .btn-secondary {
+    @apply border border-coffee/20 bg-softBeige text-coffee hover:-translate-y-0.5 hover:border-caramel/55 hover:bg-cream hover:text-espresso focus-visible:outline-coffee/20;
+  }
+
+  .nav-link {
+    @apply text-sm font-bold text-coffee/70 transition hover:text-espresso;
+  }
+
+  .icon-button {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-md border border-coffee/15 bg-softBeige text-coffee transition hover:bg-cream hover:text-espresso focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-coffee/20;
+  }
+
+  .pill {
+    @apply rounded-md border border-caramel/20 bg-softBeige px-3 py-2;
+  }
+
+  .hero-image-card {
+    @apply relative aspect-[4/5] max-h-[560px] overflow-hidden rounded-lg bg-coffee/10 shadow-warm sm:aspect-[5/4] lg:aspect-[5/4];
+  }
+
+  .gallery-card {
+    @apply relative min-h-72 overflow-hidden rounded-lg bg-coffee/10 shadow-soft;
+  }
+
+  .gallery-card figcaption {
+    @apply absolute bottom-4 left-4 right-4 rounded-md bg-espresso/80 px-4 py-3 text-sm font-bold text-cream backdrop-blur;
+  }
+
+  .map-card {
+    @apply relative flex min-h-[430px] items-end overflow-hidden rounded-lg bg-cream p-6 shadow-soft;
+  }
+}
+
+.map-card::before {
+  background:
+    linear-gradient(135deg, rgba(90, 56, 37, 0.16), rgba(201, 133, 66, 0.14)),
+    url("https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=80");
+  background-position: center;
+  background-size: cover;
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.map-grid {
+  background-image:
+    linear-gradient(rgba(43, 26, 18, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(43, 26, 18, 0.12) 1px, transparent 1px);
+  background-size: 54px 54px;
+  inset: 0;
+  opacity: 0.42;
+  position: absolute;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
