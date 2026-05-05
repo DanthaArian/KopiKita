@@ -257,19 +257,19 @@ function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-espresso/10 bg-softBeige/95 backdrop-blur-xl">
-      <nav className="container-page flex h-20 items-center justify-between gap-4">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-espresso/10 bg-softBeige/90 backdrop-blur-md">
+      <nav className="container-page flex h-16 md:h-20 items-center justify-between gap-4">
         <a
           className="flex items-center gap-3 text-espresso"
           href="#beranda"
           aria-label="KopiKita beranda"
           onClick={() => setOpen(false)}
         >
-          <span className="grid h-11 w-11 place-items-center rounded-lg bg-coffee text-cream shadow-soft">
-            <Coffee aria-hidden="true" size={24} />
+          <span className="grid h-10 w-10 md:h-11 md:w-11 place-items-center rounded-lg bg-coffee text-cream shadow-soft">
+            <Coffee aria-hidden="true" size={20} />
           </span>
           <span>
-            <span className="block font-display text-xl font-extrabold leading-none">
+            <span className="block font-display text-lg md:text-xl font-extrabold leading-none">
               KopiKita
             </span>
             <span className="mt-1 block text-xs font-semibold text-coffee/70">
@@ -316,12 +316,11 @@ function Navbar() {
         </div>
       </nav>
 
-      {open && (
-        <div className="border-t border-espresso/10 bg-softBeige px-5 py-4 shadow-soft md:hidden">
-          <div className="mx-auto grid max-w-md gap-2">
+      <div className={`absolute inset-x-0 top-full border-t border-espresso/10 bg-softBeige px-5 py-6 shadow-xl transition-all duration-300 md:hidden ${open ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0 pointer-events-none"}`}>
+          <div className="mx-auto grid gap-3">
             {navItems.map((item) => (
               <a
-                className="rounded-md px-4 py-3 text-sm font-bold text-coffee transition hover:bg-cream"
+                className="rounded-lg bg-white/50 px-4 py-4 text-center text-sm font-bold text-coffee transition active:scale-95 active:bg-cream"
                 href={item.href}
                 key={item.href}
                 onClick={() => setOpen(false)}
@@ -330,37 +329,36 @@ function Navbar() {
               </a>
             ))}
           </div>
-        </div>
-      )}
+      </div>
     </header>
   );
 }
 
 function HeroSection() {
   return (
-    <section className="relative isolate overflow-hidden bg-cream pt-20" id="beranda">
+    <section className="relative isolate overflow-hidden bg-cream pt-16 md:pt-20" id="beranda">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_15%,rgba(201,133,66,0.20),transparent_34%),linear-gradient(135deg,#fff8ef_0%,#f7e8d0_100%)]" />
-      <div className="container-page grid items-center gap-10 pb-14 pt-10 sm:pt-12 lg:grid-cols-[1.02fr_0.98fr] lg:gap-14 lg:pb-16 lg:pt-14">
+      <div className="container-page grid items-center gap-12 pb-14 pt-10 md:pb-20 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:pt-14">
         <div className="max-w-3xl">
-          <p className="inline-flex items-center gap-2 rounded-md border border-caramel/30 bg-softBeige px-3 py-2 text-xs font-extrabold uppercase tracking-[0.14em] text-coffee">
+          <p className="inline-flex items-center gap-2 rounded-md border border-caramel/30 bg-softBeige px-3 py-2 text-[10px] md:text-xs font-extrabold uppercase tracking-[0.14em] text-coffee">
             <Heart aria-hidden="true" size={15} />
             Kopi Enak, Teman Cerita Setiap Hari.
           </p>
-          <h1 className="mt-6 max-w-full font-display text-3xl font-extrabold leading-tight text-espresso sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 max-w-full font-display text-4xl font-extrabold leading-[1.15] text-espresso md:text-5xl lg:text-6xl">
             Nikmati Kopi Enak yang Selalu Dekat dengan Ceritamu
           </h1>
-          <p className="mt-5 max-w-2xl text-base leading-8 text-coffee/80 sm:text-lg">
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-coffee/80 md:text-lg">
             Dari pagi produktif sampai malam penuh obrolan, KopiKita hadir
             dengan racikan kopi lokal yang nikmat, harga bersahabat, dan
             suasana kedai yang bikin betah.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink className="w-full sm:w-auto" href={whatsappBase}>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <ButtonLink className="w-full justify-center sm:w-auto" href={whatsappBase}>
               <MessageCircle aria-hidden="true" size={19} />
               Order via WhatsApp
             </ButtonLink>
-            <ButtonLink className="w-full sm:w-auto" href="#menu" variant="secondary">
+            <ButtonLink className="w-full justify-center sm:w-auto" href="#menu" variant="secondary">
               <ShoppingBag aria-hidden="true" size={19} />
               Lihat Menu
             </ButtonLink>
@@ -377,38 +375,38 @@ function HeroSection() {
         </div>
 
         <div className="relative">
-          <div className="hero-image-card">
+          <div className="hero-image-card max-w-md mx-auto lg:max-w-none">
             <img
               alt="Iced coffee KopiKita di meja kayu dengan suasana kedai hangat"
-              className="h-full w-full object-cover"
+              className="h-[300px] md:h-full w-full object-cover"
               src="/assets/kopikita-hero.png"
             />
-            <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between gap-3 rounded-lg bg-softBeige/95 p-4 shadow-soft backdrop-blur">
-              <div>
+            <div className="absolute bottom-4 left-4 right-4 md:bottom-5 md:left-5 md:right-5 flex items-center justify-between gap-3 rounded-lg bg-softBeige/95 p-4 shadow-soft backdrop-blur">
+              <div className="shrink-0">
                 <p className="text-xs font-bold uppercase tracking-[0.12em] text-caramel">
                   Rating Kedai
                 </p>
-                <p className="mt-1 font-display text-xl font-extrabold text-espresso">
-                  4.8/5
+                <p className="mt-1 font-display text-lg md:text-xl font-extrabold text-espresso">
+                  4.8 <span className="text-sm">/ 5</span>
                 </p>
                 <p className="text-xs font-semibold text-coffee/70">
                   dari pelanggan lokal
                 </p>
               </div>
-              <div className="flex text-caramel" aria-label="Rating 5 bintang">
-                {Array.from({ length: 5 }).map((_, index) => (
+              <div className="flex text-caramel gap-0.5" aria-label="Rating 5 bintang">
+                {[...Array(5)].map((_, index) => (
                   <Star
                     aria-hidden="true"
                     fill="currentColor"
                     key={index}
-                    size={18}
+                    size={16}
                   />
                 ))}
               </div>
             </div>
           </div>
 
-          <div className="absolute -right-3 top-7 hidden rounded-lg bg-espresso px-4 py-3 text-cream shadow-soft sm:block">
+          <div className="absolute -right-3 top-7 hidden rounded-lg bg-espresso px-4 py-3 text-cream shadow-soft lg:block">
             <p className="text-xs font-bold uppercase tracking-[0.12em] text-caramel">
               Mulai dari
             </p>
@@ -423,11 +421,11 @@ function HeroSection() {
 function AboutSection() {
   return (
     <section className="section bg-softBeige" id="tentang">
-      <div className="container-page grid items-center gap-10 lg:grid-cols-[0.94fr_1.06fr]">
+      <div className="container-page grid items-center gap-14 lg:grid-cols-[0.94fr_1.06fr]">
         <div className="relative order-2 lg:order-1">
           <img
             alt="Barista membuat kopi di coffee shop lokal"
-            className="h-[420px] w-full rounded-lg object-cover shadow-soft"
+            className="h-[320px] md:h-[420px] w-full rounded-xl object-cover shadow-soft"
             src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=85"
           />
           <div className="absolute -bottom-5 left-5 right-5 rounded-lg border border-caramel/20 bg-cream p-5 shadow-soft sm:left-auto sm:w-72">
@@ -441,14 +439,14 @@ function AboutSection() {
           <SectionHeader
             eyebrow="Tentang KopiKita"
             title="Kopi Lokal, Rasa Akrab, Harga Bersahabat"
-            description="KopiKita dibuat untuk kamu yang butuh tempat nyaman buat mulai hari, nugas, kerja sebentar, atau sekadar ngobrol santai. Kami percaya kopi yang enak tidak harus ribet dan mahal. Cukup dibuat dengan bahan berkualitas, racikan pas, dan disajikan dengan hati."
+            description="KopiKita dibuat untuk kamu yang butuh tempat nyaman buat mulai hari atau sekadar rehat. Kami percaya kopi yang enak tidak harus mahal. Cukup dibuat dengan bahan berkualitas dan disajikan dengan hati."
           />
-          <div className="mt-8 grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-3">
             {highlights.map((item) => (
               <SmallHighlight key={item.title} {...item} />
             ))}
           </div>
-          <ButtonLink className="mt-8" href="#lokasi" variant="secondary">
+          <ButtonLink className="mt-8 w-full justify-center md:w-auto" href="#lokasi" variant="secondary">
             <Users aria-hidden="true" size={19} />
             Kenalan dengan KopiKita
           </ButtonLink>
@@ -480,11 +478,11 @@ function MenuSection() {
           <SectionHeader
             eyebrow="Menu Favorit"
             title="Menu Favorit yang Wajib Kamu Coba"
-            description="Dari kopi susu klasik sampai varian manis creamy, pilih minuman favoritmu dan pesan langsung lewat WhatsApp."
+            description="Pilih minuman favoritmu dan pesan langsung lewat WhatsApp."
           />
-          <ButtonLink className="shrink-0" href={whatsappBase}>
+          <ButtonLink className="shrink-0 w-full justify-center md:w-auto" href={whatsappBase}>
             <Send aria-hidden="true" size={19} />
-            Pesan Menu Favorit
+            Pesan Sekarang
           </ButtonLink>
         </div>
 
@@ -494,7 +492,7 @@ function MenuSection() {
           <span className="pill">Tersedia hot & iced untuk beberapa menu.</span>
         </div>
 
-        <div className="mt-9 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {menuItems.map((item) => (
             <MenuCard item={item} key={item.name} />
           ))}
@@ -548,13 +546,13 @@ function PromoSection() {
   return (
     <section className="section bg-softBeige">
       <div className="container-page">
-        <div className="overflow-hidden rounded-lg bg-espresso text-cream shadow-warm lg:grid lg:grid-cols-[1fr_0.82fr]">
-          <div className="p-7 sm:p-10 lg:p-12">
+        <div className="overflow-hidden rounded-2xl bg-espresso text-cream shadow-warm lg:grid lg:grid-cols-[1fr_0.82fr]">
+          <div className="p-8 sm:p-10 lg:p-12">
             <span className="inline-flex items-center gap-2 rounded-md bg-caramel px-3 py-2 text-xs font-extrabold uppercase tracking-[0.14em] text-espresso">
               <Clock aria-hidden="true" size={15} />
               Promo Minggu Ini
             </span>
-            <h2 className="mt-6 max-w-2xl font-display text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h2 className="mt-6 max-w-2xl font-display text-3xl font-extrabold leading-tight md:text-4xl">
               Promo Hemat Buat Teman Ngopi Bareng
             </h2>
               <p className="mt-4 max-w-2xl text-base leading-8 text-cream/80">
@@ -567,13 +565,13 @@ function PromoSection() {
                 Paket Berdua
               </p>
               <p className="mt-2 font-display text-2xl font-extrabold sm:text-3xl">
-                2 Kopi Susu Kita hanya Rp34.000
+                2 Kopi Susu Kita Rp34.000
               </p>
               <p className="mt-2 text-sm font-semibold text-cream/70">
                 Promo berlaku selama persediaan masih ada.
               </p>
             </div>
-            <ButtonLink className="mt-7" href={whatsappBase}>
+            <ButtonLink className="mt-7 w-full justify-center md:w-auto" href={whatsappBase}>
               <MessageCircle aria-hidden="true" size={19} />
               Klaim Promo via WhatsApp
             </ButtonLink>
@@ -601,17 +599,17 @@ function BenefitsSection() {
           align="center"
           eyebrow="Kenapa KopiKita"
           title="Kenapa Banyak yang Balik Lagi ke KopiKita?"
-          description="Bukan cuma soal kopi. KopiKita hadir sebagai tempat kecil yang nyaman untuk berbagai cerita, dari deadline tugas sampai obrolan pulang kerja."
+          description="KopiKita hadir sebagai tempat kecil yang nyaman untuk berbagai cerita."
         />
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map((item) => (
             <BenefitCard item={item} key={item.title} />
           ))}
         </div>
 
         <div className="mt-9 text-center">
-          <ButtonLink href={whatsappBase}>
+          <ButtonLink className="w-full justify-center md:w-auto" href={whatsappBase}>
             <Coffee aria-hidden="true" size={19} />
             Coba KopiKita Hari Ini
           </ButtonLink>
@@ -645,15 +643,15 @@ function GallerySection() {
           <SectionHeader
             eyebrow="Galeri Kedai"
             title="Suasana Hangat Buat Cerita yang Panjang"
-            description="Duduk sebentar, pesan kopi favorit, dan nikmati suasana kedai yang santai. KopiKita cocok untuk kamu yang ingin rehat dari rutinitas tanpa harus pergi jauh."
+            description="Duduk sebentar dan nikmati suasana kedai yang santai."
           />
-          <ButtonLink className="shrink-0" href="#lokasi" variant="secondary">
+          <ButtonLink className="shrink-0 w-full justify-center md:w-auto" href="#lokasi" variant="secondary">
             <MapPin aria-hidden="true" size={19} />
-            Lihat Lokasi Kedai
+            Lokasi Kedai
           </ButtonLink>
         </div>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {galleryItems.map((item) => (
             <figure
               className={`gallery-card ${item.tall ? "lg:row-span-2" : ""}`}
@@ -685,14 +683,14 @@ function TestimonialsSection() {
           description="Pelanggan kami datang untuk kopi, lalu kembali karena suasananya."
         />
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {testimonials.map((item) => (
             <TestimonialCard item={item} key={item.name} />
           ))}
         </div>
 
         <div className="mt-9 text-center">
-          <ButtonLink href={whatsappBase}>
+          <ButtonLink className="w-full justify-center md:w-auto" href={whatsappBase}>
             <MessageCircle aria-hidden="true" size={19} />
             Jadi Pelanggan Berikutnya
           </ButtonLink>
@@ -729,7 +727,7 @@ function TestimonialCard({ item }) {
 function LocationSection() {
   return (
     <section className="section bg-softBeige" id="lokasi">
-      <div className="container-page grid gap-8 lg:grid-cols-[0.94fr_1.06fr]">
+      <div className="container-page grid gap-12 lg:grid-cols-[0.94fr_1.06fr]">
         <div>
           <SectionHeader
             eyebrow="Lokasi & Jam Buka"
@@ -761,13 +759,14 @@ function LocationSection() {
               rel="noreferrer"
               target="_blank"
               variant="secondary"
+              className="w-full justify-center md:w-auto"
             >
               <Navigation aria-hidden="true" size={19} />
               Buka Google Maps
             </ButtonLink>
-            <ButtonLink href={whatsappBase}>
+            <ButtonLink className="w-full justify-center md:w-auto" href={whatsappBase}>
               <MessageCircle aria-hidden="true" size={19} />
-              Order Sebelum Datang
+              Pesan Dulu
             </ButtonLink>
           </div>
 
@@ -776,14 +775,14 @@ function LocationSection() {
           </p>
         </div>
 
-        <div className="map-card">
+        <div className="map-card h-[350px] md:h-full">
           <div className="map-grid" />
-          <div className="relative z-10 max-w-sm rounded-lg bg-softBeige/95 p-6 shadow-soft">
+          <div className="relative z-10 max-w-sm mx-4 md:mx-6 rounded-lg bg-softBeige/95 p-5 md:p-6 shadow-soft">
             <span className="grid h-12 w-12 place-items-center rounded-lg bg-caramel text-espresso">
               <MapPin aria-hidden="true" size={24} />
             </span>
-            <h3 className="mt-5 font-display text-2xl font-extrabold text-espresso">
-              KopiKita Jakarta Selatan
+            <h3 className="mt-4 font-display text-xl md:text-2xl font-extrabold text-espresso">
+              KopiKita Selatan
             </h3>
             <p className="mt-3 text-sm leading-7 text-coffee/75">
               Dekat kampus, mudah diakses, dan nyaman untuk mampir sebelum atau
@@ -819,13 +818,13 @@ function CtaSection() {
   )}`;
 
   return (
-    <section className="bg-espresso py-16 text-cream">
-      <div className="container-page text-center">
+    <section className="bg-espresso py-16 md:py-24 text-cream">
+      <div className="container-page text-center px-6">
         <p className="section-eyebrow text-caramel">Order WhatsApp</p>
         <h2 className="mx-auto max-w-3xl font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
           Sudah Tahu Mau Pesan Apa?
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-cream/80">
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-cream/80 md:text-lg">
           Klik tombol di bawah, pilih menu favoritmu, dan tim KopiKita akan
           bantu proses pesananmu lewat WhatsApp.
         </p>
